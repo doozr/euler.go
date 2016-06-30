@@ -1,6 +1,16 @@
-package main
+package euler
 
-import "github.com/doozr/geuler/euler/math"
+import "geuler/euler/math"
+
+/*
+The prime factors of 13195 are 5, 7, 13 and 29.
+
+What is the largest prime factor of the number 600851475143 ?
+
+
+Answer:
+    6857
+ */
 
 func highestPrimeFactor(n int) int {
 	factors := math.PrimeFactors(n)
@@ -13,10 +23,7 @@ func highestPrimeFactor(n int) int {
 // Problem0003PrimeFactors calculates the highest prime factor of 600851475143
 func Problem0003PrimeFactors() (string, int, error) {
 	name := "Prime factors"
-	total := highestPrimeFactor(600851475143)
 	expected := 6857
-	if total != expected {
-		return name, total, EulerError{expected, total}
-	}
-	return name, total, nil
+	actual := highestPrimeFactor(600851475143)
+	return name, actual, AssertEqual(expected, actual)
 }
