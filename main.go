@@ -28,7 +28,10 @@ func main() {
 		euler.Problem0004PalindromeProduct,
 	}
 
+	bm := benchmark.Start()
 	for ix, fn := range problems {
 		runEulerFunc(ix+1, fn)
 	}
+	fmt.Printf("Total time: %dµs", benchmark.End(bm))
+
 }
