@@ -1,5 +1,7 @@
 package euler
 
+import "geuler/euler/assert"
+
 /*
 The sum of the squares of the first ten natural numbers is,
 
@@ -35,5 +37,5 @@ func Problem0006SumSquareDifference() (string, int, error) {
 	name := "Sum square difference"
 	expected := 25164150
 	actual := sumSquareDifference(100)
-	return name, actual, AssertEqual(expected, actual)
+	return name, actual, assert.Equal(expected, actual)
 }

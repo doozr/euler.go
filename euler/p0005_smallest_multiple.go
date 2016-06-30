@@ -1,5 +1,7 @@
 package euler
 
+import "geuler/euler/assert"
+
 /*
 2520 is the smallest number that can be divided by each of the numbers from 1 to 10 without any remainder.
 
@@ -31,5 +33,5 @@ func Problem0005SmallestMultiple() (string, int, error) {
 	name := "Smallest multiple"
 	expected := 232792560
 	actual := smallestMultiple(20)
-	return name, actual, AssertEqual(expected, actual)
+	return name, actual, assert.Equal(expected, actual)
 }

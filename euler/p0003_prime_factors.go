@@ -1,6 +1,9 @@
 package euler
 
-import "geuler/euler/math"
+import (
+	"geuler/euler/math"
+	"geuler/euler/assert"
+)
 
 /*
 The prime factors of 13195 are 5, 7, 13 and 29.
@@ -25,5 +28,5 @@ func Problem0003PrimeFactors() (string, int, error) {
 	name := "Prime factors"
 	expected := 6857
 	actual := highestPrimeFactor(600851475143)
-	return name, actual, AssertEqual(expected, actual)
+	return name, actual, assert.Equal(expected, actual)
 }

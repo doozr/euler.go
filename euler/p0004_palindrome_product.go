@@ -3,6 +3,7 @@ package euler
 import (
 	"math"
 	"fmt"
+	"geuler/euler/assert"
 )
 
 /*
@@ -48,5 +49,5 @@ func Problem0004PalindromeProduct() (string, int, error) {
 	name := "Palindrome product"
 	expected := 906609
 	actual := maxPalindromeProduct(100, 999)
-	return name, actual, AssertEqual(expected, actual)
+	return name, actual, assert.Equal(expected, actual)
 }
