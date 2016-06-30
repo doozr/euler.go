@@ -1,5 +1,9 @@
 package math
 
+import (
+	"math"
+)
+
 func PrimeFactors(n int) []int {
 	factors := make([]int, 2)
 	if n == 2 || n == 3 {
@@ -20,13 +24,17 @@ func PrimeFactors(n int) []int {
 
 func Primes(n int, ch chan int) {
 	marked := make([]bool, n)
-	ch <- 2
-	for x := 3; x < n; x += 2 {
+	sqrtn := int(math.Sqrt(float64(n)))
+	for x := 3; x <= sqrtn; x += 2 {
 		if !marked[x] {
-			ch <- x
-			for y := x; y < n; y += x {
+			for y := x * x; y < n; y += x {
 				marked[y] = true
 			}
+		}
+	}
+	for x := 1; x < n; x += 2 {
+		if !marked[x] {
+			ch <- x
 		}
 	}
 	close(ch)
