@@ -22,12 +22,13 @@ func MultiplesOfThreeAndFive(limit int) int {
 	return total
 }
 
-// Problem0001MultipleOfThreeAndFive calculate the sum of multiples of 3 and 5 under 1000
-func Problem0001MultipleOfThreeAndFive() (int, error) {
+// Problem0001MultiplesOfThreeAndFive calculate the sum of multiples of 3 and 5 under 1000
+func Problem0001MultiplesOfThreeAndFive() (string, int, error) {
+	name := "Multiples of three and five"
 	total := MultiplesOfThreeAndFive(1000)
 	expected := 233168
 	if total != expected {
-		return total, EulerError{expected, total}
+		return name, total, EulerError{expected, total}
 	}
-	return total, nil
+	return name, total, nil
 }
