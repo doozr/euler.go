@@ -26,6 +26,7 @@ func main() {
 		euler.Problem0002FibonacciSequence,
 		euler.Problem0003PrimeFactors,
 		euler.Problem0004PalindromeProduct,
+		euler.Problem0005SmallestMultiple,
 	}
 
 	bm := benchmark.Start()
