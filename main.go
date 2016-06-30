@@ -28,6 +28,7 @@ func main() {
 		euler.Problem0004PalindromeProduct,
 		euler.Problem0005SmallestMultiple,
 		euler.Problem0006SumSquareDifference,
+		euler.Problem0007TenThousandAndFirstPrime,
 	}
 
 	bm := benchmark.Start()

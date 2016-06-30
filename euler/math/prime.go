@@ -17,3 +17,18 @@ func PrimeFactors(n int) []int {
 	}
 	return factors
 }
+
+func Primes(n int, ch chan int) {
+	marked := make([]bool, n)
+	ch <- 2
+	for x := 3; x < n; x += 2 {
+		if !marked[x] {
+			ch <- x
+			for y := x; y < n; y += x {
+				marked[y] = true
+			}
+		}
+	}
+	close(ch)
+}
+
