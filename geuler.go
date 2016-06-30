@@ -17,6 +17,7 @@ func main() {
 	problems := []eulerFunc{
 		Problem0001MultiplesOfThreeAndFive,
 		Problem0002FibonacciSequence,
+		Problem0003PrimeFactors,
 	}
 
 	for ix, fn := range problems {
