@@ -1,8 +1,8 @@
 package euler
 
 import (
-	"geuler/euler/math"
-	"geuler/euler/assert"
+	"github.com/doozr/geuler/euler/assert"
+	"github.com/doozr/geuler/euler/math"
 )
 
 /*
@@ -13,7 +13,7 @@ What is the largest prime factor of the number 600851475143 ?
 
 Answer:
     6857
- */
+*/
 
 func highestPrimeFactor(n int) int {
 	factors := math.PrimeFactors(n)

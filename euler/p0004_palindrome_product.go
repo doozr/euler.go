@@ -1,9 +1,9 @@
 package euler
 
 import (
-	"math"
 	"fmt"
-	"geuler/euler/assert"
+	"github.com/doozr/geuler/euler/assert"
+	"math"
 )
 
 /*
@@ -21,7 +21,7 @@ func isPalindrome(s string) bool {
 	halfway := int(length / 2)
 	end := length - 1
 	for ix := 0; ix <= halfway; ix++ {
-		if s[ix] != s[end - ix] {
+		if s[ix] != s[end-ix] {
 			return false
 		}
 	}

@@ -1,8 +1,8 @@
 package euler
 
 import (
-	"geuler/euler/math"
-	"geuler/euler/assert"
+	"github.com/doozr/geuler/euler/assert"
+	"github.com/doozr/geuler/euler/math"
 )
 
 /*

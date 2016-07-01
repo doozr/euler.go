@@ -1,6 +1,6 @@
 package euler
 
-import "geuler/euler/assert"
+import "github.com/doozr/geuler/euler/assert"
 
 /*
 2520 is the smallest number that can be divided by each of the numbers from 1 to 10 without any remainder.
@@ -14,7 +14,7 @@ Answer:
 
 func makeDivisible(num, divisor int) int {
 	for x := 1; x < divisor; x++ {
-		if num * x % divisor == 0 {
+		if num*x%divisor == 0 {
 			return x
 		}
 	}

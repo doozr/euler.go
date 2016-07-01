@@ -2,8 +2,8 @@ package main
 
 import "fmt"
 import (
-	"geuler/euler"
-	"geuler/euler/benchmark"
+	"github.com/doozr/geuler/euler"
+	"github.com/doozr/geuler/euler/benchmark"
 )
 
 type eulerFunc func() (string, int, error)

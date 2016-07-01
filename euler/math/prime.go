@@ -39,4 +39,3 @@ func Primes(n int, ch chan int) {
 	}
 	close(ch)
 }
-

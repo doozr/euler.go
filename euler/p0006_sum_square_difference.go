@@ -1,6 +1,6 @@
 package euler
 
-import "geuler/euler/assert"
+import "github.com/doozr/geuler/euler/assert"
 
 /*
 The sum of the squares of the first ten natural numbers is,
