@@ -1,5 +1,7 @@
 package math
 
+import "math"
+
 // Fib emits an infinite stream of Fibonacci numbers
 func Fib() <-chan int {
 	ch := make(chan int)
@@ -14,4 +16,8 @@ func Fib() <-chan int {
 		}
 	}()
 	return ch
+}
+
+func PowInt(x, y int) int {
+	return int(math.Pow(float64(x), float64(y)))
 }

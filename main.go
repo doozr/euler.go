@@ -30,6 +30,7 @@ func main() {
 		euler.Problem0006SumSquareDifference,
 		euler.Problem0007TenThousandAndFirstPrime,
 		euler.Problem0008LargestProductInSeries,
+		euler.Problem0009SpecialPythagoreanTriple,
 	}
 
 	bm := benchmark.Start()
