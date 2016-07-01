@@ -29,12 +29,12 @@ func main() {
 		euler.Problem0005SmallestMultiple,
 		euler.Problem0006SumSquareDifference,
 		euler.Problem0007TenThousandAndFirstPrime,
+		euler.Problem0008LargestProductInSeries,
 	}
 
 	bm := benchmark.Start()
 	for ix, fn := range problems {
-		runEulerFunc(ix+1, fn)
+		runEulerFunc(ix + 1, fn)
 	}
 	fmt.Printf("Total time: %dµs", benchmark.End(bm))
-
 }
