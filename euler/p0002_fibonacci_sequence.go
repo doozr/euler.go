@@ -21,9 +21,8 @@ Answer:
 
 // SumFibEvens calculates the sum of even numbers in the Fibonacci sequence up to limit
 func SumFibEvens(limit int) int {
-	ch := make(chan int)
 	total := 0
-	go math.Fib(ch)
+	ch := math.Fib()
 	for next := <-ch; next < limit; next = <-ch {
 		if next%2 == 0 {
 			total += next

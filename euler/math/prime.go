@@ -22,20 +22,24 @@ func PrimeFactors(n int) []int {
 	return factors
 }
 
-func Primes(n int, ch chan int) {
-	marked := make([]bool, n)
-	sqrtn := int(math.Sqrt(float64(n)))
-	for x := 3; x <= sqrtn; x += 2 {
-		if !marked[x] {
-			for y := x * x; y < n; y += x {
-				marked[y] = true
+func Primes(n int) <-chan int {
+	ch := make(chan int)
+	go func() {
+		marked := make([]bool, n)
+		sqrtn := int(math.Sqrt(float64(n)))
+		for x := 3; x <= sqrtn; x += 2 {
+			if !marked[x] {
+				for y := x * x; y < n; y += x {
+					marked[y] = true
+				}
 			}
 		}
-	}
-	for x := 1; x < n; x += 2 {
-		if !marked[x] {
-			ch <- x
+		for x := 1; x < n; x += 2 {
+			if !marked[x] {
+				ch <- x
+			}
 		}
-	}
-	close(ch)
+		close(ch)
+	}()
+	return ch
 }

@@ -16,10 +16,8 @@ Answer:
 */
 
 func nthPrime(n int) int {
-	ch := make(chan int)
 	prime := 0
-
-	go math.Primes(200000, ch)
+	ch := math.Primes(200000)
 	for x := 0; x < n; x += 1 {
 		prime = <-ch
 	}
