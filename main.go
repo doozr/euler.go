@@ -8,16 +8,30 @@ import (
 
 type eulerFunc func() (string, int, error)
 
-func runEulerFunc(ix int, fn eulerFunc) {
-	bm := benchmark.Start()
-	name, result, err := fn()
-	µs := benchmark.End(bm)
-	if err != nil {
-		fmt.Printf("%04d: %s - %s (%dµs)\n", ix, name, err, µs)
-	} else {
-		fmt.Printf("%04d: %s - Answer: %d (%dµs)\n", ix, name, result, µs)
-	}
+type Result struct {
+	index int
+	name  string
+	value int
+	err   error
+	µs    int
+}
 
+func runEulerFunc(ix int, fn eulerFunc) <-chan Result {
+	ch := make(chan Result)
+	go func() {
+		bm := benchmark.Start()
+		name, value, err := fn()
+		µs := benchmark.End(bm)
+		ch <- Result{ix, name, value, err, µs}
+		close(ch)
+	}()
+	return ch
+}
+
+func aggregate(agg chan Result, ch <-chan Result) {
+	for result := range ch {
+		agg <- result
+	}
 }
 
 func main() {
@@ -31,11 +45,24 @@ func main() {
 		euler.Problem0007TenThousandAndFirstPrime,
 		euler.Problem0008LargestProductInSeries,
 		euler.Problem0009SpecialPythagoreanTriple,
+		euler.Problem0010SummationOfPrimes,
 	}
+
+	aggregateChannel := make(chan Result)
 
 	bm := benchmark.Start()
 	for ix, fn := range problems {
-		runEulerFunc(ix + 1, fn)
+		go aggregate(aggregateChannel, runEulerFunc(ix+1, fn))
 	}
+
+	for ix := 0; ix < len(problems); ix++ {
+		result := <-aggregateChannel
+		if result.err != nil {
+			fmt.Printf("%04d: %s - %s (%dµs)\n", result.index, result.name, result.err, result.µs)
+		} else {
+			fmt.Printf("%04d: %s - Answer: %d (%dµs)\n", result.index, result.name, result.value, result.µs)
+		}
+	}
+
 	fmt.Printf("Total time: %dµs", benchmark.End(bm))
 }
